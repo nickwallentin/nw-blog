@@ -1,0 +1,87 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'inter';
+  src: url('../public/assets/fonts/Inter/Inter-Regular.ttf');
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'inter';
+  src: url('../public/assets/fonts/Inter/Inter-Bold.ttf');
+  font-weight: 700;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'source-sans';
+  src: url('../public/assets/fonts/Source_Sans_Pro/SourceSansPro-Regular.ttf');
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'source-sans';
+  src: url('../public/assets/fonts/Source_Sans_Pro/SourceSansPro-SemiBold.ttf');
+  font-weight: 600;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'source-sans';
+  src: url('../public/assets/fonts/Source_Sans_Pro/SourceSansPro-Bold.ttf');
+  font-weight: 700;
+  font-display: swap;
+}
+
+@layer base {
+  body {
+    font-family: 'source-sans';
+    font-weight: 400;
+    @apply text-lg text-black bg-white dark:text-white dark:bg-[#141414] leading-relaxed;
+  }
+
+  h1,
+  h2,
+  h3 {
+    @apply font-bold;
+  }
+  h1 {
+    @apply text-6xl;
+  }
+  h2 {
+    @apply text-4xl;
+  }
+  h3 {
+    @apply text-2xl;
+  }
+  p {
+    @apply dark:text-white/80 text-black/80;
+  }
+}
+
+@layer components {
+  .contain {
+    @apply px-5 mx-auto md:px-10 max-w-7xl;
+  }
+  .section {
+    @apply py-10 md:py-20;
+  }
+  .section-sm {
+    @apply py-5 md:py-10;
+  }
+  .row {
+    @apply pb-10 last:pb-0;
+  }
+  .row-sm {
+    @apply pb-5 last:pb-0;
+  }
+  .text-link {
+    @apply relative inline-flex items-center space-x-2 font-semibold transition-all after:block transition-all after:bg-main after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-[0px]  group-hover:after:w-full;
+  }
+  .text-link svg {
+    @apply group-hover:animate-bounce-right;
+  }
+  .section-label {
+    @apply text-sm font-bold uppercase opacity-30;
+  }
+}

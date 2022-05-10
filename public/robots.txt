@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://www.nickwallentin.com/
+
+# Sitemaps
+Sitemap: https://www.nickwallentin.com/sitemap.xml
