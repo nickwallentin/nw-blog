@@ -93,6 +93,6 @@
     @apply grid md:grid-cols-[1fr,300px] gap-20 contain section;
   }
   .article {
-    @apply mx-auto prose-sm sm:mx-0 sm:prose-xl md:prose-2xl max-w-prose;
+    @apply mx-auto prose-base sm:mx-0 sm:prose-lg md:prose-xl xl:prose-2xl max-w-prose;
   }
 }
