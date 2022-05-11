@@ -9,8 +9,8 @@ const Code = ({ code }: CodeProps) => {
     Prism.highlightAll();
   }, []);
   return (
-    <pre>
-      <code className={`language-${code.language}`}>
+    <pre className='w-[100%]'>
+      <code className={`w-full language-${code.language}`}>
         {code.rich_text.map(({ text }) => text.content).join(' ')}
       </code>
     </pre>
