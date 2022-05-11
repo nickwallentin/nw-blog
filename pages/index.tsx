@@ -8,7 +8,7 @@ export const getStaticProps = async (context) => {
 export default function Home({ articles }) {
   return (
     <>
-      <div className='grid md:grid-cols-[1fr,300px] gap-20 contain section'>
+      <div className='layout'>
         <ArticleList heading='Latest articles' articles={articles} />
       </div>
     </>

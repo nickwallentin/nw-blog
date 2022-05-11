@@ -41,8 +41,8 @@ const Article = ({ article }: ArticleProps) => {
   return (
     <>
       <SEO title={article.title} description={article.description} />
-      <div className='contain grid md:grid-cols-[1fr,300px] section'>
-        <article className='prose-sm md:prose-2xl max-w-prose'>
+      <div className='layout'>
+        <article className='article'>
           <h1>{article.title}</h1>
 
           <p className='article-intro'>{article.description}</p>
