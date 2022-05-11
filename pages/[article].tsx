@@ -42,10 +42,10 @@ const Article = ({ article }: ArticleProps) => {
     <>
       <SEO title={article.title} description={article.description} />
       <div className='contain grid grid-cols-[1fr,300px] section'>
-        <article className='prose-lg max-w-prose'>
+        <article className='prose-sm md:prose-2xl max-w-prose'>
           <h1>{article.title}</h1>
 
-          <p className='font-semibold'>{article.description}</p>
+          <p className='article-intro'>{article.description}</p>
           <ArticleMeta article={article} />
           <Blocks blocks={article.blocks} />
         </article>
@@ -58,7 +58,7 @@ const Article = ({ article }: ArticleProps) => {
 export default Article;
 const ArticleMeta = ({ article }) => {
   return (
-    <div className='flex items-center justify-between text-base '>
+    <div className='flex items-center justify-between text-base border-b dark:border-b-white/10 border-b-black/10 '>
       <div className='flex items-center space-x-4'>
         <figure className='relative w-10 h-10 overflow-hidden rounded-full'>
           <Image

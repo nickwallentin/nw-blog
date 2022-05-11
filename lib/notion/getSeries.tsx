@@ -1,11 +1,12 @@
 import { IArticle } from 'types/article';
 import notion from './notion';
 import transformArticles from '@lib/transformers/transformArticles';
+import transformSeries from '@lib/transformers/transformSeries';
 
 const getSeries = async () => {
   try {
     const response = await notion.databases.query({
-      database_id: process.env.NOTION_DB_ARTICLES,
+      database_id: process.env.NOTION_DB_SERIES,
       filter: {
         and: [
           {
@@ -14,18 +15,12 @@ const getSeries = async () => {
               equals: 'Published',
             },
           },
-          {
-            property: 'Date Published',
-            date: {
-              is_not_empty: true,
-            },
-          },
         ],
       },
     });
 
-    let data: IArticle[] = await transformArticles(response.results);
-
+    let data = await transformSeries(response.results);
+    console.log('SERIES DATA =>', data);
     return data;
   } catch (error) {
     console.error('ERROR getSeries ==>', error);

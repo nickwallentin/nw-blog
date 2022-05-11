@@ -1,12 +1,16 @@
+import getArticle from './getArticle';
 import getBlocks from '@lib/notion/getBlocks';
 import getNotionIDFromSlug from '@lib/utils/getNotionIDFromSlug';
 import notion from '@lib/notion/notion';
 import { prisma } from '@lib/prisma/client';
+import seriesmap from '@data/series-map.json';
 import slugify from 'slug';
-export default async function getArticle(path: string, id?: boolean) {
+export default async function getSerie(path: string, id?: boolean) {
   try {
     //Get page info
-    const notion_id = id ? path : getNotionIDFromSlug(path);
+    const { notion_id } = seriesmap.find(
+      (serie) => serie.preferred_slug === path || serie.default_slug === path
+    );
     const pageResponse = await notion.pages.retrieve({
       page_id: notion_id,
     });
@@ -14,11 +18,11 @@ export default async function getArticle(path: string, id?: boolean) {
 
     //Get blocks
     const blocks = await getBlocks(pageData.id);
-    const additionalData = await prisma.article.findUnique({
-      where: { id: notion_id },
-      select: { views: true },
-    });
-
+    const articles = [];
+    for (let article of pageData.properties.Articles.relation) {
+      const articleData = await getArticle(article.id, true);
+      articles.push(articleData);
+    }
     const data = {
       id: pageData.id,
       slug: slugify(
@@ -33,13 +37,10 @@ export default async function getArticle(path: string, id?: boolean) {
         name,
         slug: slugify(name),
       })),
-      published_time: pageData.properties['Date Published'].date.start,
       last_edited_time: pageData.last_edited_time,
       cover: pageData.cover,
+      articles,
       blocks,
-      stats: {
-        views: additionalData?.views || 0,
-      },
     };
 
     return data;

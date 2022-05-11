@@ -1,7 +1,9 @@
+import BulletListItem from './blocktypes/BulletListItem';
 import Code from './blocktypes/Code';
 import Heading from './blocktypes/Heading';
 import ImageBlock from './blocktypes/ImageBlock';
 import Paragraph from './blocktypes/Paragraph';
+import ShowcaseComponent from './blocktypes/ShowcaseComponent';
 
 export default function Block({ block }) {
   switch (block.type) {
@@ -22,6 +24,10 @@ export default function Block({ block }) {
 
     case 'code':
       return <Code code={block.code} />;
+    case 'bulleted_list_item':
+      return <BulletListItem bullet={block.bulleted_list_item} />;
+    case 'equation':
+      return <ShowcaseComponent component={block.equation} />;
 
     default:
       return <p>{block.type}</p>;
