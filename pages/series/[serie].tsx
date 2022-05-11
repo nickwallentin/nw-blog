@@ -16,8 +16,8 @@ interface SeriePageProps {
 const SeriePage = ({ serie }: SeriePageProps) => {
   return (
     <>
-      <div className='contain grid grid-cols-[1fr,300px] section'>
-        <article className='md:prose-2xl prose-sm max-w-prose'>
+      <div className='contain grid md:grid-cols-[1fr,300px] section'>
+        <article className='prose-sm md:prose-2xl max-w-prose'>
           <p className='section-label'>Series</p>
           <h1 className='mb-5'>{serie.title}</h1>
           <p className='pb-10 border-b article-intro dark:border-b-white/10'>
